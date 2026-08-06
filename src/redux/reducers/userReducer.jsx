@@ -38,8 +38,6 @@ export const loginApiAsync = (user) => {
     try {
       const data = await login(user);
 
-      console.log("LOGIN DATA:", data);
-
       if (data) {
         const username = data.name;
         dispatch(loginAction(username));
