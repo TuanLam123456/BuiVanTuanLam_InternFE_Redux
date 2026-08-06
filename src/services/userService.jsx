@@ -4,7 +4,14 @@ const API_URL = "http://localhost:8080/users";
 
 // Login
 export const login = async (user) => {
-  const response = await axios.get(`${API_URL}?email=${user.email}`);
-
-  return response.data.filter((item) => item.password === user.password);
+  try {
+    const response = await axios.get(API_URL);
+    const account = response.data.find(
+      (item) => item.email === user.email && item.password === user.password,
+    );
+    return account || null;
+  } catch (error) {
+    console.log("Login error:", error);
+    return null;
+  }
 };

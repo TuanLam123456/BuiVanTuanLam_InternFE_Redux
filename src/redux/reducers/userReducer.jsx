@@ -40,13 +40,10 @@ export const loginApiAsync = (user) => {
 
       console.log("LOGIN DATA:", data);
 
-      if (data.length > 0) {
-        const username = data[0].name;
-
+      if (data) {
+        const username = data.name;
         dispatch(loginAction(username));
-
         localStorage.setItem("username", username);
-
         return true;
       }
 
